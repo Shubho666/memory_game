@@ -1,9 +1,11 @@
 let cardList = ["fa fa-diamond", "fa fa-paper-plane-o", "fa fa-anchor", "fa fa-bolt", "fa fa-cube", "fa fa-anchor", "fa fa-leaf", "fa fa-bicycle", "fa fa-diamond", "fa fa-bomb", "fa fa-leaf", "fa fa-bomb", "fa fa-bolt", "fa fa-bicycle", "fa fa-paper-plane-o", "fa fa-cube"];
 
+
+
 $(".endgame").hide();
 
 $(".restart").on("click", function() {
-    restart();
+    newgame();
 });
 
 $(".newGame").on("click", function() {
@@ -67,7 +69,7 @@ function updateStar() {
         const z = document.getElementById("third");
         $(z).toggleClass("fa fa-star");
         $(z).toggleClass("fa fa-star-o");
-    } else if (countmoves >= 20 && flag == 1) {
+    } else if (countmoves >= 25 && flag == 1) {
         flag = 2;
         const z = document.getElementById("second");
         $(z).toggleClass("fa fa-star");
@@ -84,8 +86,7 @@ function checkIfEqual(card) {
 
 function gameover() {
     $(".container").hide();
-    $(".score").html("Moves: " + countmoves);
-    $("#Time").html("Time taken: " + timetaken);
+    $("#Time").html("With " + countmoves + " moves and " + (3 - flag) + " stars.Time taken: " + timetaken);
     $(".endgame").show();
 }
 
@@ -141,7 +142,6 @@ function updateMoves() {
 }
 $(".card").on("click", function() {
     iD = $(this).attr("id");
-
     if (openCardsId[0] != iD && (clicked.length == 0 || !(clicked.includes(iD)))) {
         updateMoves();
         updateStar();
