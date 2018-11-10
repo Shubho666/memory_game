@@ -168,10 +168,18 @@ h1 {
     padding-top: 25%;
 }
 
-.score {
+#score {
     font-size: 50px;
 }
 
+#Time {
+    font-size: 30px;
+}
+
 .newGame {
+    font-size: 50px;
+}
+
+.star_details {
     font-size: 50px;
 }
